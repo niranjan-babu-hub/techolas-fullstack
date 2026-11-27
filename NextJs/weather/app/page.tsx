@@ -2,8 +2,8 @@ import { Getweather } from "@/lib/weather";
 import { Suspense } from "react";
 
 
-   async function Weather({searchparams}:{searchparams:Promise<{[key:string]: string | undefined}>}){
-    const {city} = await searchparams;
+   async function Weather({searchParams}:{searchParams:Promise<{[key:string]: string | undefined}>}){
+    const {city} = await searchParams;
 
     const weather = await Getweather(city || "london");
      return <div>
@@ -21,10 +21,10 @@ import { Suspense } from "react";
          </h2>
      </div>
    }
-    export default function Home({searchparams}:{searchparams:Promise<{[key:string]:string | undefined}>}){
+    export default function Home({searchParams}:{searchParams:Promise<{[key:string]:string | undefined}>}){
     return <div>
       <Suspense fallback={<div>Loading</div>}>
-      <Weather searchparams={searchparams}></Weather>
+      <Weather searchParams={searchParams}></Weather>
 
       </Suspense>
     </div>
